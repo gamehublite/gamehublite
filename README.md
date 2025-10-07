@@ -85,58 +85,6 @@ Comprehensive security analysis, reverse engineering documentation, and technica
 
 ---
 
-## 🛠️ Architecture
-
-```
-[GameHub App]
-     ↓
-[Cloudflare Worker] ← gamehub-worker (routes requests)
-     ↓
-     ├─→ GitHub ← gamehub_api (static data: manifests, configs)
-     ├─→ External Servers (game metadata, GPU configs) [User IP hidden]
-     └─→ Returns direct CDN links (downloads bypass proxy)
-```
-
-**Key Design Decisions:**
-1. **Static data on GitHub** - Transparent, version-controlled, auditable
-2. **Cloudflare Workers proxy** - Edge computing, fast worldwide, free tier
-3. **No download proxying** - App downloads directly from CDN (no logging)
-4. **Self-hostable** - Deploy to your own accounts in under 5 minutes
-
----
-
-## 📦 Self-Hosting
-
-**Want 100% control? Host everything yourself!**
-
-All GameHub Lite projects are designed to be self-hosted. You can deploy to your own infrastructure and never trust third-party servers.
-
-### Quick Start
-
-**1. Deploy the Cloudflare Worker:**
-```bash
-git clone https://github.com/gamehublite/gamehub-worker.git
-cd gamehub-worker
-npm install
-npm run deploy
-# Output: https://gamehub-worker-YOUR-NAME.workers.dev
-```
-
-**2. Fork the static API repository:**
-```bash
-# Fork gamehub_api on GitHub
-# Your URL: https://raw.githubusercontent.com/YOUR-USERNAME/gamehub_api/main/
-```
-
-**3. Update your APK:**
-- Modify `EggGameHttpConfig.smali` to point to your worker URL
-- Recompile and sign the APK
-- You now control the entire stack!
-
-**Total cost:** $0 (free tiers)
-
----
-
 ## 🎯 Use Cases
 
 **For Privacy Enthusiasts:**
@@ -163,31 +111,6 @@ Each repository has comprehensive documentation:
 - **gamehub-worker:** API endpoints, privacy features, deployment guide
 - **gamehub_api:** Manifest formats, configuration files, maintenance procedures
 - **gamehub-oss:** Complete security analysis, replication procedures, technical reports
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-**Code Contributions:**
-- Improve the Cloudflare Worker code
-- Add new component manifests
-- Optimize performance
-- Fix bugs
-
-**Documentation:**
-- Improve installation guides
-- Add usage examples
-- Translate documentation
-- Create tutorials
-
-**Testing:**
-- Report issues
-- Test self-hosting procedures
-- Verify privacy features
-
-**Please Note:** This project is for educational and research purposes. All contributions should respect applicable laws and ethical guidelines.
 
 ---
 
@@ -218,25 +141,6 @@ We do not encourage or condone:
 
 ---
 
-## 📊 Stats
-
-- **Total Repositories:** 3
-- **Total Stars:** TBD
-- **Languages:** TypeScript, JSON, Markdown
-- **License:** MIT (educational purposes)
-- **Status:** Active development
-
----
-
-## 📧 Contact
-
-For questions, issues, or discussions:
-- Open an issue in the relevant repository
-- Check repository documentation first
-- Review existing issues before creating new ones
-
----
-
 ## 🙏 Acknowledgments
 
 Built with:
@@ -249,9 +153,3 @@ Inspired by:
 - Privacy research community
 - Android reverse engineering community
 - Open source transparency advocates
-
----
-
-**GameHub Lite** - Privacy-respecting, transparent, self-hostable.
-
-*Last updated: October 2025*
